@@ -28,7 +28,8 @@ const DeleteBtn = styled.button`
   color: #fff;
   background-color: blue;
   transition: all 0.3s ease-in-out;
-
+  cursor: pointer;
+  
   &:hover,
   &:focus {
     background-color: blueviolet;

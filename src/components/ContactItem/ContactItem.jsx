@@ -1,17 +1,23 @@
 import PropTypes from 'prop-types';
 import { Item, Bullet, DeleteBtn } from './ContactItem.styled';
 
-const ContactItem = ({ id, name, number, deleteItem }) => (
-  <Item>
-    <Bullet></Bullet>
-    {name}: {number}
-    <DeleteBtn onClick={() => deleteItem(id)} type="button">
-      Delete
-    </DeleteBtn>
-  </Item>
-);
+const ContactItem = ({ id, name, number, deleteItem }) => {
+  const handleDeleteClick = () => {
+    if (window.confirm(`Do you really want to delete the contact ${name}?`)) {
+      deleteItem(id);
+    }
+  };
 
-export default ContactItem;
+  return (
+    <Item>
+      <Bullet />
+      {name}: {number}
+      <DeleteBtn type="button" onClick={handleDeleteClick}>
+        Delete
+      </DeleteBtn>
+    </Item>
+  );
+};
 
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
@@ -19,3 +25,5 @@ ContactItem.propTypes = {
   number: PropTypes.string.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };
+
+export default ContactItem;
